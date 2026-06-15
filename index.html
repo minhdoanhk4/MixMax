@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MixMax - Phần Mềm Trộn & Trình Chiếu Video Trực Quan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>MixMax - Phần mềm trộn và trình chiếu video chuyên nghiệp</title>
     <style>
         :root {
-            --bg-color: #0b132b;
-            --bg-card: rgba(28, 61, 90, 0.4);
-            --primary: #3498db;
-            --primary-hover: #2980b9;
-            --text-color: #f5f6fa;
-            --text-muted: #a0a8c0;
-            --accent: #2ecc71;
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --bg-dark: #07090e;
+            --bg-card: #0e131f;
+            --bg-card-hover: #151d2f;
+            --primary-blue: #0088ff;
+            --accent-blue: #00c8ff;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
         }
 
         * {
@@ -24,354 +24,721 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: var(--font-family);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Ambient background glow */
-        .ambient-glow {
+        /* Ambient Glow Effects */
+        .glow-top-left {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(52, 152, 219, 0.15) 0%, rgba(0,0,0,0) 70%);
-            top: -100px;
-            right: -100px;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .ambient-glow-2 {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(46, 204, 113, 0.1) 0%, rgba(0,0,0,0) 70%);
-            bottom: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 136, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -150px;
             left: -100px;
             z-index: -1;
             pointer-events: none;
         }
 
-        header {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px;
+        .glow-middle-right {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 200, 255, 0.1) 0%, rgba(0,0,0,0) 70%);
+            top: 600px;
+            right: -200px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .logo-container {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 0.5px;
+            color: #ffffff;
         }
 
-        .logo-img {
-            width: 40px;
-            height: 40px;
+        .logo-symbol {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 900;
         }
 
-        .logo-text {
-            font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+            margin-left: 24px;
         }
 
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-btn {
+            background: rgba(0, 136, 255, 0.15);
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue) !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-blue) !important;
+            color: #fff !important;
+        }
+
+        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 0 20px;
         }
 
-        .hero {
+        /* Hero Section */
+        header.hero-section {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 80px auto;
+            padding: 80px 0 60px 0;
+            max-width: 850px;
+            margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 56px;
+        .badge-new {
+            display: inline-block;
+            background: rgba(0, 136, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 136, 255, 0.2);
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        h1.main-title {
+            font-size: 48px;
             font-weight: 800;
+            line-height: 1.25;
             margin-bottom: 20px;
-            line-height: 1.2;
-            letter-spacing: -1px;
+            color: #ffffff;
         }
 
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        h1.main-title span {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 20px;
+        p.subtitle {
+            font-size: 18px;
             color: var(--text-muted);
-            margin-bottom: 40px;
-            font-weight: 300;
+            margin-bottom: 36px;
+            font-weight: 400;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-group {
+        .hero-actions {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
         }
 
-        .btn-download {
+        .btn-primary {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            background: linear-gradient(135deg, var(--primary) 0%, #2980b9 100%);
+            background: linear-gradient(135deg, var(--primary-blue), #0066cc);
             color: #fff;
             padding: 16px 36px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 50px;
+            border-radius: 8px;
             text-decoration: none;
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0, 136, 255, 0.25);
         }
 
-        .btn-download:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.6);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 136, 255, 0.4);
         }
 
-        .security-badge {
-            font-size: 14px;
-            color: var(--accent);
+        .btn-primary svg {
+            fill: currentColor;
+            width: 20px;
+            height: 20px;
+        }
+
+        .security-info {
             display: flex;
             align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .security-info svg {
+            fill: var(--accent-blue);
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Interactive App Mockup */
+        .app-mockup {
+            background: #090c13;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 100px rgba(0, 136, 255, 0.05);
+            padding: 12px;
+            margin: 40px auto 80px auto;
+            max-width: 960px;
+        }
+
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 12px;
+        }
+
+        .mockup-dots {
+            display: flex;
             gap: 6px;
         }
 
-        .security-badge svg {
-            width: 16px;
-            height: 16px;
-            fill: var(--accent);
+        .mockup-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .mockup-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: monospace;
         }
 
-        .features {
+        .mockup-body {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 200px 1fr;
+            gap: 12px;
+            min-height: 380px;
+        }
+
+        .mockup-sidebar {
+            background: #111625;
+            border-right: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-item {
+            height: 32px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 11px;
+            color: var(--text-muted);
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-item.active {
+            background: rgba(0, 136, 255, 0.08);
+            color: #fff;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .mockup-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mockup-screens {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .mockup-screen {
+            background: #151c2c;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-label {
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            align-self: flex-start;
+            border-radius: 0 0 4px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .screen-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+
+        .screen-inner-active {
+            background: linear-gradient(135deg, rgba(0,136,255,0.1), rgba(0,200,255,0.2));
+            color: var(--accent-blue);
+        }
+
+        .mockup-footer {
+            height: 60px;
+            background: #111625;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+        }
+
+        .mockup-btn {
+            background: var(--primary-blue);
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .mockup-slider {
+            width: 150px;
+            height: 6px;
+            background: #222;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .mockup-handle {
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Features Section */
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #ffffff;
+        }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 80px;
         }
 
-        .feature-card {
+        @media (max-width: 768px) {
+            .grid-features {
+                grid-template-columns: 1fr;
+            }
+            .mockup-body {
+                grid-template-columns: 1fr;
+            }
+            .mockup-sidebar {
+                display: none;
+            }
+        }
+
+        .card-feature {
             background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            border-radius: 12px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.2s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(52, 152, 219, 0.3);
+        .card-feature:hover {
+            border-color: rgba(0, 136, 255, 0.4);
+            background: var(--bg-card-hover);
         }
 
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 20px;
+        .card-icon-wrapper {
+            background: rgba(0, 136, 255, 0.1);
+            color: var(--primary-blue);
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
 
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-            font-weight: 600;
+        .card-icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
-        .feature-card p {
+        .card-content h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .card-content p {
             color: var(--text-muted);
-            font-size: 16px;
-            font-weight: 300;
+            font-size: 14.5px;
+            line-height: 1.5;
         }
 
-        .how-to-install {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+        /* Installation & Download Section */
+        .download-box {
+            background: linear-gradient(180deg, #0e1322 0%, #080b12 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             padding: 40px;
             margin-bottom: 80px;
         }
 
-        .how-to-install h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .step-item {
-            text-align: center;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
+        .download-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin: 0 auto 15px auto;
-        }
-
-        .step-item h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .step-item p {
-            color: var(--text-muted);
-            font-size: 14px;
-            font-weight: 300;
-        }
-
-        /* SmartScreen workaround alert */
-        .alert-box {
-            background: rgba(241, 196, 15, 0.1);
-            border: 1px solid rgba(241, 196, 15, 0.3);
-            border-radius: 16px;
-            padding: 25px;
-            margin-top: 30px;
-            display: flex;
-            align-items: flex-start;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 24px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
             gap: 15px;
         }
 
-        .alert-icon {
+        .download-details h2 {
             font-size: 24px;
-            line-height: 1;
+            font-weight: 700;
         }
 
-        .alert-content h4 {
-            color: #f1c40f;
-            margin-bottom: 6px;
-            font-size: 16px;
-        }
-
-        .alert-content p {
-            font-size: 14px;
+        .download-meta {
+            font-size: 13px;
             color: var(--text-muted);
+            margin-top: 4px;
         }
 
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            font-size: 14px;
+        .download-meta span {
+            margin-right: 15px;
+        }
+
+        .step-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 40px;
+            .step-list {
+                grid-template-columns: 1fr;
             }
-            .hero p {
-                font-size: 18px;
-            }
+        }
+
+        .step-card {
+            position: relative;
+        }
+
+        .step-num {
+            font-size: 40px;
+            font-weight: 800;
+            color: rgba(0, 136, 255, 0.15);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .step-desc {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .alert-security {
+            margin-top: 30px;
+            background: rgba(0, 136, 255, 0.05);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 0 8px 8px 0;
+            padding: 20px;
+        }
+
+        .alert-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alert-title svg {
+            fill: var(--primary-blue);
+            width: 18px;
+            height: 18px;
+        }
+
+        .alert-body {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 80px;
         }
     </style>
 </head>
 <body>
-    <div class="ambient-glow"></div>
-    <div class="ambient-glow-2"></div>
+    <div class="glow-top-left"></div>
+    <div class="glow-middle-right"></div>
 
-    <header>
-        <div class="logo-container">
-            <span class="logo-text">MixMax</span>
+    <nav>
+        <div class="logo">
+            <div class="logo-symbol">M</div>
+            <span>MixMax</span>
         </div>
-    </header>
+        <div class="nav-links">
+            <a href="#features">Tính năng</a>
+            <a href="#download">Tải về</a>
+            <a href="https://github.com/minhdoanhk4/MixMax/releases/download/v1.0.0.0/MixMax_Installer.exe" class="nav-btn">Tải Free</a>
+        </div>
+    </nav>
 
     <div class="container">
-        <section class="hero">
-            <h1>Phần Mềm Trộn & Trình Chiếu <span>Chuyên Nghiệp</span></h1>
-            <p>Giải pháp tối ưu, trực quan và mạnh mẽ để trình diễn các nội dung đa phương tiện, PowerPoint, PDF và Video lên màn hình LED, máy chiếu nhanh chóng.</p>
-            
-            <div class="cta-group">
-                <a href="https://github.com/minhdoanhk4/MixMax/releases/download/v1.0.0.0/MixMax_Installer.exe" class="btn-download">
-                    Tải Xuống Bản Cài Đặt (.exe)
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <span class="badge-new">PHIÊN BẢN MỚI NHẤT V1.0.0</span>
+            <h1 class="main-title">Trình chiếu & Trộn Video <span>Không Giới Hạn</span></h1>
+            <p class="subtitle">Ứng dụng gọn nhẹ dành cho Windows hỗ trợ quản lý, chuyển đổi hiệu ứng và phát trực tiếp các nguồn Video, tài liệu PowerPoint hoặc PDF lên màn hình thứ hai.</p>
+            <div class="hero-actions">
+                <a href="https://github.com/minhdoanhk4/MixMax/releases/download/v1.0.0.0/MixMax_Installer.exe" class="btn-primary">
+                    <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                    Tải về MixMax cho Windows (Free)
                 </a>
-                <div class="security-badge">
+                <div class="security-info">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                    Đã kiểm duyệt sạch 100% trên VirusTotal
+                    <span>Quét bảo mật sạch 100% trên VirusTotal</span>
                 </div>
             </div>
         </section>
 
-        <section class="features">
-            <div class="feature-card">
-                <div class="feature-icon">📁</div>
-                <h3>Quản Lý Input Đa Dạng</h3>
-                <p>Hỗ trợ thêm nhanh hàng loạt tệp tin đa phương tiện bao gồm Video, Hình ảnh, tài liệu PowerPoint (.pptx), PDF vô cùng linh hoạt.</p>
+        <!-- Simulated App UI Mockup -->
+        <div class="app-mockup">
+            <div class="mockup-header">
+                <div class="mockup-dots">
+                    <div class="mockup-dot dot-red"></div>
+                    <div class="mockup-dot dot-yellow"></div>
+                    <div class="mockup-dot dot-green"></div>
+                </div>
+                <div class="mockup-title">MixMax - Control Panel</div>
+                <div style="width: 42px;"></div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🖥️</div>
-                <h3>Trình Chiếu Fullscreen</h3>
-                <p>Khả năng ánh xạ trình chiếu toàn màn hình mượt mà lên màn hình phụ, màn hình LED hoặc máy chiếu phụ trợ chỉ bằng một nút bấm.</p>
+            <div class="mockup-body">
+                <div class="mockup-sidebar">
+                    <div class="sidebar-item active">📺 Danh sách nguồn (Inputs)</div>
+                    <div class="sidebar-item">🗂️ Thư mục Slide/Hình ảnh</div>
+                    <div class="sidebar-item">⚙️ Cấu hình đầu ra</div>
+                </div>
+                <div class="mockup-content">
+                    <div class="mockup-screens">
+                        <div class="mockup-screen">
+                            <span class="screen-label">Màn hình xem trước (Preview)</span>
+                            <div class="screen-inner">
+                                Nguồn đang chờ...
+                            </div>
+                        </div>
+                        <div class="mockup-screen">
+                            <span class="screen-label" style="background: #e74c3c;">Trình chiếu (Program)</span>
+                            <div class="screen-inner screen-inner-active">
+                                Đang phát trực tiếp
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mockup-footer">
+                        <button class="mockup-btn" style="background:#e74c3c">CUT</button>
+                        <div class="mockup-slider">
+                            <div class="mockup-handle"></div>
+                        </div>
+                        <button class="mockup-btn">FADE</button>
+                    </div>
+                </div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎚️</div>
-                <h3>Bộ Trộn & Hiệu Ứng</h3>
-                <p>Chuyển cảnh (Transition) trực quan bằng thanh fader (T-Bar) thủ công hoặc nút chuyển cảnh tự động (Cut/Fade) chuyên nghiệp.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔄</div>
-                <h3>Tự Động Cập Nhật</h3>
-                <p>Ứng dụng tích hợp trình tự động cập nhật ngầm. Người dùng luôn nhận được các bản sửa lỗi và tính năng mới nhất một cách thuận tiện.</p>
+        </div>
+
+        <!-- Features Section -->
+        <section id="features">
+            <h2 class="section-title">Tính Năng Nổi Bật</h2>
+            <div class="grid-features">
+                <div class="card-feature">
+                    <div class="card-icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+                    </div>
+                    <div class="card-content">
+                        <h3>Trình chiếu đa phương tiện</h3>
+                        <p>Hỗ trợ đa định dạng video, hình ảnh, slide thuyết trình Microsoft PowerPoint và các tệp văn bản PDF. Dễ dàng sắp xếp và chuyển đổi nhanh.</p>
+                    </div>
+                </div>
+                <div class="card-feature">
+                    <div class="card-icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+                    </div>
+                    <div class="card-content">
+                        <h3>Chế độ Fullscreen thông minh</h3>
+                        <p>Tự động nhận diện thiết bị đầu ra phụ (như cổng HDMI kết nối tới màn hình LED, Tivi hoặc Máy chiếu) để xuất hình ảnh chất lượng cao mà không làm gián đoạn màn hình điều khiển chính.</p>
+                    </div>
+                </div>
+                <div class="card-feature">
+                    <div class="card-icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/></svg>
+                    </div>
+                    <div class="card-content">
+                        <h3>Định cấu hình Chất lượng</h3>
+                        <p>Cung cấp khả năng cấu hình độ phân giải tùy chọn (Full HD, HD, SD). Ứng dụng tự động lưu cài đặt cuối cùng của người dùng và giữ nguyên cho những phiên sử dụng tiếp theo.</p>
+                    </div>
+                </div>
+                <div class="card-feature">
+                    <div class="card-icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 9.24 4 10.97 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                    </div>
+                    <div class="card-content">
+                        <h3>Tự động cập nhật trực tuyến</h3>
+                        <p>Công nghệ cập nhật thông minh được tích hợp sẵn. Mỗi khi nhà phát triển xuất bản phiên bản mới lên GitHub, người dùng sẽ tự động nhận được thông báo nâng cấp ngay khi bật ứng dụng.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="how-to-install">
-            <h2>Hướng Dẫn Cài Đặt & Sử Dụng</h2>
-            <div class="steps">
-                <div class="step-item">
-                    <div class="step-number">1</div>
-                    <h4>Tải bộ cài đặt</h4>
-                    <p>Nhấp vào nút tải bên trên để tải xuống file cài đặt <code>MixMax_Installer.exe</code>.</p>
+        <!-- Download & Installation -->
+        <section id="download" class="download-box">
+            <div class="download-header">
+                <div class="download-details">
+                    <h2>Tải ứng dụng MixMax</h2>
+                    <div class="download-meta">
+                        <span>Hệ điều hành: <strong>Windows 10 / 11 (64-bit)</strong></span>
+                        <span>Phiên bản: <strong>v1.0.0.0</strong></span>
+                        <span>Dung lượng: <strong>~78 MB</strong></span>
+                    </div>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">2</div>
-                    <h4>Chạy file cài đặt</h4>
-                    <p>Mở file vừa tải về và tiến hành cài đặt ứng dụng theo các chỉ dẫn trên màn hình.</p>
+                <a href="https://github.com/minhdoanhk4/MixMax/releases/download/v1.0.0.0/MixMax_Installer.exe" class="btn-primary">
+                    Tải về ngay (.exe)
+                </a>
+            </div>
+
+            <div class="step-list">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <h4 class="step-title">Tải về</h4>
+                    <p class="step-desc">Tải file cài đặt <code>MixMax_Installer.exe</code> từ nút download ở trên.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">3</div>
-                    <h4>Bắt đầu sử dụng</h4>
-                    <p>Mở ứng dụng từ màn hình Desktop, thêm nguồn và tận hưởng khả năng mixing tuyệt vời.</p>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <h4 class="step-title">Cài đặt</h4>
+                    <p class="step-desc">Khởi chạy tệp tin đã tải về, tiến hành cài đặt chương trình theo các bước hướng dẫn đơn giản.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <h4 class="step-title">Sử dụng</h4>
+                    <p class="step-desc">Mở ứng dụng từ biểu tượng ở màn hình Desktop, thêm nguồn trình chiếu và bắt đầu sử dụng.</p>
                 </div>
             </div>
 
-            <!-- Windows SmartScreen warning guide to build trust -->
-            <div class="alert-box">
-                <div class="alert-icon">💡</div>
-                <div class="alert-content">
-                    <h4>Lưu ý về bảo mật SmartScreen của Windows</h4>
-                    <p>Vì đây là phần mềm mã nguồn mở mới phát hành, Windows Defender có thể hiển thị cảnh báo màu xanh <i>"Windows protected your PC"</i> khi chạy lần đầu. Bạn hãy yên tâm nhấn vào <b>More info (Thông tin thêm)</b> và chọn <b>Run anyway (Vẫn chạy)</b> để tiếp tục cài đặt.</p>
+            <div class="alert-security">
+                <div class="alert-title">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    Thông tin cần biết khi cài đặt
+                </div>
+                <div class="alert-body">
+                    Vì đây là ứng dụng mã nguồn mở mới được phát hành, hệ thống bảo mật <strong>Windows Defender SmartScreen</strong> trên PC của bạn có thể hiển thị cảnh báo chặn khởi chạy trong lần đầu tiên. Đây là cơ chế bảo mật bình thường đối với các phần mềm mới chưa có chữ ký số trả phí. Để tiếp tục cài đặt, bạn chỉ cần nhấn vào liên kết <strong>"More info" (Thông tin thêm)</strong> và click nút <strong>"Run anyway" (Vẫn chạy)</strong>. Ứng dụng cam kết an toàn tuyệt đối và sạch 100%.
                 </div>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 MixMax. Phát hành hoàn toàn miễn phí dưới bản quyền Open Source.</p>
+        <div class="container">
+            <p>Dự án mã nguồn mở phát hành hoàn toàn miễn phí. Bản quyền thuộc về tác giả &copy; 2026.</p>
+        </div>
     </footer>
 </body>
 </html>
