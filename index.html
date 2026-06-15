@@ -214,8 +214,8 @@
             height: 16px;
         }
 
-        /* Interactive App Mockup */
-        .app-mockup {
+        /* App UI Mockup (Actual Screenshot) */
+        .app-screenshot-container {
             background: #090c13;
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -254,132 +254,12 @@
             font-family: monospace;
         }
 
-        .mockup-body {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 12px;
-            min-height: 380px;
-        }
-
-        .mockup-sidebar {
-            background: #111625;
-            border-right: 1px solid var(--border-color);
+        .app-screenshot {
+            width: 100%;
+            height: auto;
             border-radius: 6px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .sidebar-item {
-            height: 32px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            font-size: 11px;
-            color: var(--text-muted);
-            border-left: 3px solid transparent;
-        }
-
-        .sidebar-item.active {
-            background: rgba(0, 136, 255, 0.08);
-            color: #fff;
-            border-left: 3px solid var(--primary-blue);
-        }
-
-        .mockup-content {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .mockup-screens {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            flex-grow: 1;
-        }
-
-        .mockup-screen {
-            background: #151c2c;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .screen-label {
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            padding: 4px 8px;
-            font-size: 10px;
-            font-weight: 600;
-            align-self: flex-start;
-            border-radius: 0 0 4px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .screen-inner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.3);
-            font-weight: 600;
-        }
-
-        .screen-inner-active {
-            background: linear-gradient(135deg, rgba(0,136,255,0.1), rgba(0,200,255,0.2));
-            color: var(--accent-blue);
-        }
-
-        .mockup-footer {
-            height: 60px;
-            background: #111625;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 15px;
-        }
-
-        .mockup-btn {
-            background: var(--primary-blue);
-            color: #fff;
-            border: none;
-            padding: 6px 14px;
-            font-size: 11px;
-            font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .mockup-slider {
-            width: 150px;
-            height: 6px;
-            background: #222;
-            border-radius: 3px;
-            position: relative;
-        }
-
-        .mockup-handle {
-            width: 14px;
-            height: 14px;
-            background: #fff;
-            border-radius: 50%;
-            position: absolute;
-            top: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* Features Section */
@@ -401,12 +281,6 @@
         @media (max-width: 768px) {
             .grid-features {
                 grid-template-columns: 1fr;
-            }
-            .mockup-body {
-                grid-template-columns: 1fr;
-            }
-            .mockup-sidebar {
-                display: none;
             }
         }
 
@@ -603,8 +477,8 @@
             </div>
         </section>
 
-        <!-- Simulated App UI Mockup -->
-        <div class="app-mockup">
+        <!-- App UI Mockup (Actual Screenshot) -->
+        <div class="app-screenshot-container">
             <div class="mockup-header">
                 <div class="mockup-dots">
                     <div class="mockup-dot dot-red"></div>
@@ -614,36 +488,7 @@
                 <div class="mockup-title">MixMax - Control Panel</div>
                 <div style="width: 42px;"></div>
             </div>
-            <div class="mockup-body">
-                <div class="mockup-sidebar">
-                    <div class="sidebar-item active">📺 Danh sách nguồn (Inputs)</div>
-                    <div class="sidebar-item">🗂️ Thư mục Slide/Hình ảnh</div>
-                    <div class="sidebar-item">⚙️ Cấu hình đầu ra</div>
-                </div>
-                <div class="mockup-content">
-                    <div class="mockup-screens">
-                        <div class="mockup-screen">
-                            <span class="screen-label">Màn hình xem trước (Preview)</span>
-                            <div class="screen-inner">
-                                Nguồn đang chờ...
-                            </div>
-                        </div>
-                        <div class="mockup-screen">
-                            <span class="screen-label" style="background: #e74c3c;">Trình chiếu (Program)</span>
-                            <div class="screen-inner screen-inner-active">
-                                Đang phát trực tiếp
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mockup-footer">
-                        <button class="mockup-btn" style="background:#e74c3c">CUT</button>
-                        <div class="mockup-slider">
-                            <div class="mockup-handle"></div>
-                        </div>
-                        <button class="mockup-btn">FADE</button>
-                    </div>
-                </div>
-            </div>
+            <img class="app-screenshot" src="screenshot.png" alt="MixMax Interface" />
         </div>
 
         <!-- Features Section -->
