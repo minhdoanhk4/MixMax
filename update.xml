@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item>
+    <!-- Phiên bản hiện tại trên server. Khi người dùng chạy app có version thấp hơn version này, hộp thoại update sẽ hiện lên. -->
+    <version>1.0.0.0</version>
+    
+    <!-- Link tải trực tiếp file cài đặt mới (thông thường lấy từ link Release trên GitHub của bạn). -->
+    <url>https://github.com/minhdoanhk4/MixMax/releases/download/v1.0.0.0/MixMax_Installer.exe</url>
+    
+    <!-- Link file nhật ký thay đổi (changelog) để hiển thị trong hộp thoại thông báo cập nhật. -->
+    <changelog>https://raw.githubusercontent.com/minhdoanhk4/MixMax/main/changelog.html</changelog>
+    
+    <!-- Đặt true nếu bắt buộc người dùng phải cập nhật mới được dùng tiếp (cập nhật bắt buộc). -->
+    <mandatory>false</mandatory>
+</item>
